@@ -355,41 +355,6 @@ RETURN
         0
     )
 
-COMPLETE SUMMARY TABLE
-
-#   MEASURE NAME              CATEGORY        LEVEL
-────────────────────────────────────────────────────
-1   Total Employees           Headcount       Basic
-2   Active Employees          Headcount       Basic
-3   Total Attritions          Headcount       Basic
-4   Total Job Roles           Headcount       Basic
-5   Attrition Rate            Attrition       Basic
-6   Attrition Rate %          Attrition       Basic
-7   Attrition Rate PY         Attrition       Intermediate
-8   Attrition YoY Change      Attrition       Intermediate
-9   Avg Tenure Leavers        Attrition       Intermediate
-10  Avg Monthly Salary        Compensation    Basic
-11  Avg Annual Salary         Compensation    Basic
-12  Total Salary Cost         Compensation    Intermediate
-13  Gender Pay Gap            Compensation    Advanced
-14  Avg Performance Rating    Performance     Basic
-15  High Performers           Performance     Intermediate
-16  High Performer %          Performance     Intermediate
-17  High Risk Employees       Risk            Intermediate
-18  High Risk %               Risk            Intermediate
-19  Avg Job Satisfaction      Satisfaction    Basic
-20  Last Refreshed            Dynamic         Intermediate
-21  Cost of Attrition         Financial       Advanced
-22  Attrition Index           Financial       Advanced
-23  Attrition Status Label    Label           Advanced
-24  Overtime Attrition Rate   Segmentation    Intermediate
-25  Dynamic Report Title      Label           Advanced
-26  Dept Attrition Rank       Ranking         Advanced
-27  Attrition YTD             Time Intel      Advanced
-28  Rolling 3M Attrition      Time Intel      Advanced
-29  Projected Attritions      What-If         Advanced
-30  Projected Cost Saving     What-If         Advanced
-
 ## Live Report
 
 [ https://app.powerbi.com/Redirect?action=OpenApp&appId=ecd74a22-0d27-435c-93a8-981f64e91d6d&ctid=fb29d8c3-7084-47da-a03f-f93b80073804&experience=power-bi ] ✅
