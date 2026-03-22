@@ -42,14 +42,16 @@ Page 5: Performance & Development
 
 ## DAX Measures (30 total)
 
-Includes: RANKX, SWITCH(TRUE()) ,
+Includes: 
+RANKX, SWITCH(TRUE()) ,
 Rolling 3M Average , What-If Parameters ,
 Time Intelligence , Cost of Attrition
 
 List of all 30 DAX Measures :
 
+═══════════════════════════════
 HEADCOUNT MEASURES
-
+═══════════════════════════════
 Measure 1 — Total Employees
 
 Total Employees = 
@@ -76,7 +78,9 @@ Measure 4 — Total Job Roles
 Total Job Roles = 
 DISTINCTCOUNT(gold_fact_employees[Job_Role])
 
+═══════════════════════════════
 ATTRITION MEASURES
+═══════════════════════════════
 
 Measure 5 — Attrition Rate
 
@@ -91,6 +95,7 @@ Measure 6 — Attrition Rate %
 
 Attrition Rate % = 
 FORMAT([Attrition Rate], "0.00%")
+
 Measure 7 — Attrition Rate PY
 Attrition Rate PY = 
 CALCULATE(
@@ -102,6 +107,7 @@ Measure 8 — Attrition YoY Change
 
 Attrition YoY Change = 
 [Attrition Rate] - [Attrition Rate PY]
+
 Measure 9 — Avg Tenure Leavers
 Avg Tenure Leavers = 
 CALCULATE(
@@ -109,7 +115,9 @@ CALCULATE(
     gold_fact_employees[Attrition] = "Yes"
 )
 
+═══════════════════════════════
 COMPENSATION MEASURES
+═══════════════════════════════
 
 Measure 10 — Avg Monthly Salary
 
@@ -149,7 +157,9 @@ RETURN
         0
     )
 
+═══════════════════════════════
 PERFORMANCE MEASURES
+═══════════════════════════════
 
 Measure 14 — Avg Performance Rating
 
@@ -171,7 +181,9 @@ DIVIDE(
     0
 )
 
+═══════════════════════════════
 RISK MEASURES
+═══════════════════════════════
 
 Measure 17 — High Risk Employees
 
@@ -190,14 +202,18 @@ DIVIDE(
     0
 )
 
+═══════════════════════════════
 SATISFACTION MEASURE
+═══════════════════════════════
 
 Measure 19 — Avg Job Satisfaction
 
 Avg Job Satisfaction = 
 AVERAGE(gold_fact_employees[Job_Satisfaction])
 
+═══════════════════════════════
 DYNAMIC MEASURE
+═══════════════════════════════
 
 Measure 20 — Last Refreshed
 
@@ -205,9 +221,14 @@ Last Refreshed =
 "Last refreshed: " & 
 FORMAT(NOW(), "DD MMM YYYY HH:MM")
 
+═══════════════════════════════
 10 ADVANCED MEASURES
+═══════════════════════════════
 
+
+═══════════════════════════════
 FINANCIAL MEASURES
+═══════════════════════════════
 
 Measure 21 — Cost of Attrition
 
@@ -240,7 +261,9 @@ RETURN
         ) * 100,
     0)
 
+═══════════════════════════════
 LABEL MEASURES
+═══════════════════════════════
 
 Measure 23 — Attrition Status Label
 
@@ -281,7 +304,9 @@ RETURN
     SelectedDept & "  |  " &
     SelectedGender
 
+═══════════════════════════════
 RANKING MEASURE
+═══════════════════════════════
 
 Measure 26 — Dept Attrition Rank
 
@@ -298,7 +323,9 @@ IF(
     BLANK()
 )
 
+═══════════════════════════════
 TIME INTELLIGENCE MEASURES
+═══════════════════════════════
 
 Measure 27 — Attrition YTD
 
@@ -326,7 +353,9 @@ RETURN
         DateRange
     )
 
+═══════════════════════════════
 WHAT-IF MEASURES
+═══════════════════════════════
 
 Measure 29 — Projected Attritions
 
@@ -354,10 +383,12 @@ RETURN
         CurrentCost - ProjectedCost,
         0
     )
+    
 
 ## Live Report
 
 [ https://app.powerbi.com/Redirect?action=OpenApp&appId=ecd74a22-0d27-435c-93a8-981f64e91d6d&ctid=fb29d8c3-7084-47da-a03f-f93b80073804&experience=power-bi ] ✅
+
 
 ## Row Level Security
 
