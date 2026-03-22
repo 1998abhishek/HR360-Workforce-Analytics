@@ -32,7 +32,11 @@ Attrition Rate % = FORMAT([Attrition Rate], "0.00%") Measure 7 — Attrition Rat
 
 Measure 8 — Attrition YoY Change
 
-Attrition YoY Change = [Attrition Rate] - [Attrition Rate PY] Measure 9 — Avg Tenure Leavers Avg Tenure Leavers = CALCULATE( AVERAGE(gold_fact_employees[Years_At_Company]), gold_fact_employees[Attrition] = "Yes" )
+Attrition YoY Change = [Attrition Rate] - [Attrition Rate PY] 
+
+Measure 9 — Avg Tenure Leavers 
+
+Avg Tenure Leavers = CALCULATE( AVERAGE(gold_fact_employees[Years_At_Company]), gold_fact_employees[Attrition] = "Yes" )
 
 ═══════════════════════════════
 COMPENSATION MEASURES
@@ -52,7 +56,9 @@ Total Salary Cost = SUMX( gold_fact_employees, gold_fact_employees[Monthly_Incom
 
 Measure 13 — Gender Pay Gap
 
-Gender Pay Gap = VAR MaleSalary = CALCULATE( AVERAGE(gold_fact_employees[Monthly_Income]), gold_fact_employees[Gender] = "Male" ) VAR FemaleSalary = CALCULATE( AVERAGE(gold_fact_employees[Monthly_Income]), gold_fact_employees[Gender] = "Female" ) RETURN DIVIDE( MaleSalary - FemaleSalary, MaleSalary, 0 )
+Gender Pay Gap = VAR MaleSalary = CALCULATE( AVERAGE(gold_fact_employees[Monthly_Income]), gold_fact_employees[Gender] = "Male" ) 
+                 VAR FemaleSalary = CALCULATE( AVERAGE(gold_fact_employees[Monthly_Income]), gold_fact_employees[Gender] = "Female" ) 
+                 RETURN DIVIDE( MaleSalary - FemaleSalary, MaleSalary, 0 )
 
 ═══════════════════════════════
 PERFORMANCE MEASURES
@@ -60,13 +66,17 @@ PERFORMANCE MEASURES
 
 Measure 14 — Avg Performance Rating
 
-Avg Performance Rating = AVERAGE(gold_fact_employees[Performance_Rating]) Measure 15 — High Performers High Performers = CALCULATE( COUNTROWS(gold_fact_employees), gold_fact_employees[Performance_Rating] = 4 )
+Avg Performance Rating = AVERAGE(gold_fact_employees[Performance_Rating]) 
+
+Measure 15 — High Performers High Performers = CALCULATE( COUNTROWS(gold_fact_employees), gold_fact_employees[Performance_Rating] = 4 )
 
 Measure 16 — High Performer %
 
 High Performer % = DIVIDE( [High Performers], [Total Employees], 0 )
 
+═══════════════════════════════
 RISK MEASURES
+═══════════════════════════════
 
 Measure 17 — High Risk Employees
 
@@ -100,11 +110,16 @@ FINANCIAL MEASURES
 
 Measure 21 — Cost of Attrition
 
-Cost of Attrition = VAR AvgSalary = AVERAGE(gold_fact_employees[Monthly_Income]) VAR AnnualSalary = AvgSalary * 12 VAR ReplacementCost = AnnualSalary * 0.5 RETURN [Total Attritions] * ReplacementCost
+Cost of Attrition = VAR AvgSalary = AVERAGE(gold_fact_employees[Monthly_Income]) 
+                    VAR AnnualSalary = AvgSalary * 12 
+                    VAR ReplacementCost = AnnualSalary * 0.5 
+                    RETURN [Total Attritions] * ReplacementCost
 
 Measure 22 — Attrition Index
 
-Attrition Index = VAR CompanyAvgAttrition = CALCULATE( [Attrition Rate], ALL(gold_fact_employees) ) VAR CurrentAttrition = [Attrition Rate] RETURN ROUND( DIVIDE( CurrentAttrition, CompanyAvgAttrition, 0 ) * 100, 0)
+Attrition Index = VAR CompanyAvgAttrition = CALCULATE( [Attrition Rate], ALL(gold_fact_employees) ) 
+                  VAR CurrentAttrition = [Attrition Rate] 
+                  RETURN ROUND( DIVIDE( CurrentAttrition, CompanyAvgAttrition, 0 ) * 100, 0)
 
 ═══════════════════════════════
 LABEL MEASURES
@@ -112,7 +127,8 @@ LABEL MEASURES
 
 Measure 23 — Attrition Status Label
 
-Attrition Status = VAR Rate = [Attrition Rate] RETURN SWITCH( TRUE(), Rate > 0.20, "🔴 Critical — Above 20%", Rate > 0.15, "🟡 Warning — Above 15%", Rate > 0.10, "🟢 Acceptable — Above 10%", "✅ Excellent — Below 10%" )
+Attrition Status = VAR Rate = [Attrition Rate] RETURN SWITCH( TRUE(), Rate > 0.20, "🔴 Critical — Above 20%", Rate > 0.15
+                              , "🟡 Warning — Above 15%", Rate > 0.10, "🟢 Acceptable — Above 10%", "✅ Excellent — Below 10%" )
 
 Measure 24 — Overtime Attrition Rate
 
@@ -120,7 +136,9 @@ Overtime Attrition Rate = CALCULATE( [Attrition Rate], gold_fact_employees[Over_
 
 Measure 25 — Dynamic Report Title
 
-Dynamic Report Title = VAR SelectedDept = SELECTEDVALUE( gold_fact_employees[Department], "All Departments" ) VAR SelectedGender = SELECTEDVALUE( gold_fact_employees[Gender], "All Genders" ) RETURN "HR360 Analytics | " & SelectedDept & " | " & SelectedGender
+Dynamic Report Title = VAR SelectedDept = SELECTEDVALUE( gold_fact_employees[Department], "All Departments" ) 
+                       VAR SelectedGender = SELECTEDVALUE( gold_fact_employees[Gender], "All Genders" ) 
+                       RETURN "HR360 Analytics | " & SelectedDept & " | " & SelectedGender
 
 ═══════════════════════════════
 RANKING MEASURE
@@ -140,7 +158,9 @@ Attrition YTD = TOTALYTD( [Total Attritions], dim_date[Date] )
 
 Measure 28 — Rolling 3M Attrition Rate
 
-Rolling 3M Attrition Rate = VAR LastDate = LASTDATE(dim_date[Date]) VAR DateRange = DATESINPERIOD( dim_date[Date], LastDate, -3, MONTH ) RETURN CALCULATE( [Attrition Rate], DateRange )
+Rolling 3M Attrition Rate = VAR LastDate = LASTDATE(dim_date[Date]) 
+                            VAR DateRange = DATESINPERIOD( dim_date[Date], LastDate, -3, MONTH ) 
+                            RETURN CALCULATE( [Attrition Rate], DateRange )
 
 ═══════════════════════════════
 WHAT-IF MEASURES
@@ -152,4 +172,9 @@ Projected Attritions = ROUND( [Active Employees] * 'Attrition_Scenario'[Attritio
 
 Measure 30 — Projected Cost Saving
 
-Projected Cost Saving = VAR CurrentCost = [Cost of Attrition] VAR ProjectedAttritions = [Projected Attritions] VAR AvgAnnualSalary = AVERAGE(gold_fact_employees[Monthly_Income]) * 12 VAR ProjectedCost = ProjectedAttritions * AvgAnnualSalary * 0.5 RETURN IF( CurrentCost > ProjectedCost, CurrentCost - ProjectedCost, 0 )
+Projected Cost Saving = VAR CurrentCost = [Cost of Attrition] 
+                        VAR ProjectedAttritions = [Projected Attritions] 
+                        VAR AvgAnnualSalary = AVERAGE(gold_fact_employees[Monthly_Income]) * 12 
+                        VAR ProjectedCost = ProjectedAttritions * AvgAnnualSalary * 0.5 
+                        RETURN 
+                           IF( CurrentCost > ProjectedCost, CurrentCost - ProjectedCost, 0 )
