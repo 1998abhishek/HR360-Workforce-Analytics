@@ -392,8 +392,7 @@ RETURN
 
 ## Row Level Security
 
-Dynamic RLS using ( USERPRINCIPALNAME()
-+ LOOKUPVALUE ) against dim_roles table
+Dynamic RLS using USERPRINCIPALNAME() & LOOKUPVALUE() against [dim_roles table] ,
 Department managers see only their data.
 
 ## Pipeline
