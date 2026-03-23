@@ -39,6 +39,7 @@ Page 2: Attrition Deep Dive
 Page 3: Risk Dashboard ← showpiece
 Page 4: Compensation & Pay Equity
 Page 5: Performance & Development
+Page 6: AI INSIGHTS HUB
 
 ## DAX Measures (30 total)
 
@@ -383,7 +384,94 @@ RETURN
         CurrentCost - ProjectedCost,
         0
     )
-    
+
+Still in README.md add this section:
+
+## AI Features
+
+### Page 6 — AI Insights Hub
+
+**Key Influencers Visual**
+
+Uses Power BI built-in classification model
+Automatically identifies top drivers of attrition
+
+Top findings discovered by AI:
+
+- OverTime = Yes → 3.2× more likely to leave
+- JobSatisfaction = 1 → 2.8× more likely
+- Monthly Income low → 2.4× more likely
+- Years without promotion > 3 → elevated risk
+
+No code written — Power BI ML engine
+runs the classification automatically ✅
+
+**Decomposition Tree**
+
+AI-powered interactive drill down
+User clicks + button — AI suggests
+the next best dimension to split by
+
+Deepest path found:
+
+All employees (16.1%)
+→ OverTime Yes (30.5%)
+  → AgeGroup Under30 (45%)
+    → Department Sales (52%)
+      → SalaryBand Below3K (71%)
+
+This specific segment would take weeks
+to find manually — AI found it in 4 clicks ✅
+
+**Smart Narrative**
+
+AI generated plain English summary
+Updates automatically every data refresh
+Dynamic measure values embedded in text
+Bridges gap between data and executives ✅
+
+**Q&A Visual**
+
+Natural language data search
+Type any question — get instant answer
+
+Examples:
+
+- "attrition rate by department"
+- "total high risk employees"
+- "average salary of employees who left"
+
+Pre-loaded with 5 suggested questions
+Accessible to non-technical stakeholders ✅
+
+## Key Findings
+
+|   | Finding                                               | Impact |
+
+| 1 | Overtime workers leave at 30.5% vs 10.4% average    | 3× higher rate |
+| 2 | Annual cost of attrition: $9.5M                     | Largest single HR cost |
+| 3 | Sales dept attrition 20.6% — highest dept           | 1 in 5 lost annually |
+| 4 | Under-30 employees leave at 38%                     | Double company average |
+| 5 | Below $3K salary = 36% attrition                    | Salary is primary driver |
+| 6 | Reducing to 10% saves $4.3M annually                | CFO-level ROI case |
+| 7 | High risk employees identified by name              | Proactive retention |
+| 8 | No gender pay gap — females earn 5% more            | Positive finding |
+
+## Technical Stack
+
+| Layer |                |  Tool  |                               | Purpose |
+
+| Storage            | Microsoft Fabric Lakehouse         | Bronze/Silver/Gold Delta tables |
+| ETL                | Dataflow Gen2                      | No-code data transformation |
+| Compute            | Apache Spark (via Fabric)          | Delta Parquet processing |
+| Modelling          | Power BI Semantic Model            | Direct Lake connection |
+| Analytics          | DAX (30 measures)                  | Business calculations |
+| Reporting          | Power BI Report                    | 6 page dashboard |
+| Security           | Row Level Security                 | Dynamic dept filtering |
+| Automation         | Fabric Data Pipeline               | Daily 7AM refresh |
+| AI                 | Power BI AI Visuals                | Key Influencers + Decomp Tree |
+| Format             | Delta Lake / Parquet               | Columnar storage |
+| Pattern            | Medallion Architecture             | Bronze → Silver → Gold |
 
 ## Live Report
 
