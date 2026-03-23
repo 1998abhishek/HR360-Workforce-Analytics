@@ -475,7 +475,7 @@ Accessible to non-technical stakeholders ✅
 
 ## Live Report
 
-[ https://app.powerbi.com/Redirect?action=OpenApp&appId=ecd74a22-0d27-435c-93a8-981f64e91d6d&ctid=fb29d8c3-7084-47da-a03f-f93b80073804&experience=power-bi ] ✅
+[ https://app.powerbi.com/links/Qig5ZeHoGx?ctid=fb29d8c3-7084-47da-a03f-f93b80073804&pbi_source=linkShare ] ✅
 
 
 ## Row Level Security
