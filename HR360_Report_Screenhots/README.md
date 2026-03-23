@@ -30,6 +30,11 @@
 <img width="1482" height="827" alt="Page 5 - Performance   Development" src="https://github.com/user-attachments/assets/aa557c81-06cf-48ae-bd36-da142c240f55" />
 
 
+### Page 6 - AI INSIGHTS HUB
+
+<img width="1392" height="785" alt="PAGE 6 - AI INSIGHTS HUB" src="https://github.com/user-attachments/assets/7baff2a9-735a-4eb9-ae1e-1b31f9ac2fb0" />
+
+
 
 
 
